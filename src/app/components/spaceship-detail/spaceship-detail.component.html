@@ -1,0 +1,65 @@
+<div *ngIf="detailedShip" class="container">
+
+  <div class="col s12 m8 offset-m2">
+
+    <!-------------------- TITRE ---------------------->
+    <h2 class="text-center">{{ detailedShip.name }}</h2>
+
+    <!-------------------- IMG ---------------------->
+    <div class="img-container d-flex justify-content-center">
+      <!-- <img src="/src/assets/star-wars.jpg" alt="" class="">  --><!-- TODO: INSERER IMAGE -->
+      <!--       <img src="../assets/star-wars.jpg" alt="test.img"> -->
+      <!--       <img [src]="img" class="card-img-top" [alt]="detailedShip.name"> -->
+      <img *ngIf="imageLoaded; else alternativeImage" [src]="img" (load)="imageLoaded = true"
+        (error)="imageLoaded = false">
+
+      <ng-template #alternativeImage>
+        <img src="/assets/Image_not_available.png">
+      </ng-template>
+
+    </div>
+
+    <div class="containerInfo">
+      <div class="text-center m-3 p-3 border border-warning bloque">
+        <h5 class="card-subtitle mb-2"><strong> Model:</strong> {{ detailedShip.model }}</h5>
+        <h5 class="card-subtitle mb-2"><strong> Starship Class:</strong> {{ detailedShip.starship_class }}</h5>
+        <h5 class="card-subtitle mb-2"><strong> Manufacturer:</strong> {{ detailedShip.manufacturer}}</h5>
+        <h5 class="card-subtitle mb-2"><strong> Cost:</strong> {{ detailedShip.cost_in_credits }} CREDITS</h5>
+      </div>
+
+      <div class="row m-1">
+        <div class="col text-center border border-warning m-3 p-5 bloque">
+
+          <h6 class="card-subtitle mb-2"><strong> Crew:</strong> {{detailedShip.crew}} </h6>
+          <h6 class="card-subtitle mb-2"><strong> Passenger Capacity:</strong> {{detailedShip.passengers}}</h6>
+          <h6 class="card-subtitle mb-2"><strong> Cargo Capacity:</strong> {{detailedShip.cargo_capacity}} TONS</h6>
+          <h6 class="card-subtitle mb-2"><strong> Consumables:</strong> {{detailedShip.consumables}}</h6>
+        </div>
+
+        <div class="col text-center m-3 p-5 border border-warning bloque">
+          <h6 class="card-subtitle mb-2"><strong> Length:</strong> {{detailedShip.length}} Meters</h6>
+          <h6 class="card-subtitle mb-2"><strong> Maximum atmosphering speed:</strong> {{detailedShip.max_atmosphering_speed}} KM/H</h6>
+          <h6 class="card-subtitle mb-2"><strong> Hyperdrive rating:</strong> {{detailedShip.hyperdrive_rating}}</h6>
+          <h6 class="card-subtitle mb-2"><strong> Maximum speed in realspace:</strong> {{detailedShip.MGLT}} MGLT</h6>
+        </div>
+      </div>
+
+      <div class="col text-center m-3 p-3 border border-warning w-auto bloque">
+        <h6 class="card-subtitle mb-2">Pilots: {{detailedShip.pilots}} -- pilots</h6>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="card horizontal hoverable">
+    <div class="card-image">
+      <!-- <img [src]="detailedShip.picture"> -->
+
+    </div>
+    <div class="card-stacked">
+
+    </div>
+  </div>
+</div>
+
+<h4 *ngIf='!detailedShip' class="center">Aucun ship à afficher !</h4>

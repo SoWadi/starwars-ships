@@ -1,0 +1,16 @@
+img {
+  width: 50%;
+}
+
+.containerInfo {
+/*   background-color: fuchsia; */
+/*   border: 2px solid fuchsia; */
+  display: flex;
+  flex-direction: column;
+  margin-block: 2em;
+
+}
+
+.bloque{
+  background-color: rgba(70, 69, 67, 0.3);
+}

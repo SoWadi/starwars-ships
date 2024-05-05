@@ -1,0 +1,25 @@
+<div class="container text-center" #scrollingArea>
+
+  <div class="mt-5" *ngIf="!user">You need to be logged in to access</div>
+
+  <div *ngIf="user" class="scroll-container" (ngxInfiniteScroll)="onScroll2()">
+    <div *ngFor=" let ship of listaStarships, let i = index" class="backGroundCard m-5 p-2 scroll-item">
+      <div  [routerLink]="[ '/starships/', ship.url.split('/')[5]]"  class="d-flex flex-column text-left mx-5"> <!-- (click)="goToSpaceship(ship)" -->
+        <img src="" alt="">
+        <h3 class="card-title">{{ ship.name }}</h3>
+
+        <h5 class="card-subtitle mb-2">Model: {{ ship.model }}</h5>
+
+      </div>
+
+
+      <div class="text-center" *ngIf="page === null">
+        <p class="pShipsLoaded">All ships loaded</p>
+      </div>
+
+
+    </div>
+  </div>
+  <div class="loading" *ngIf="isLoading&&user">Loading...</div>
+
+</div>
